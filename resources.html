@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资源下载</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#9333ea',
+                        secondary: '#a855f7',
+                        light: '#f5f3ff',
+                        dark: '#4c1d95',
+                        success: '#10b981'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .resource-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .resource-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary flex items-center">
+                <i class="fa fa-pagelines mr-2"></i>珍珠的博客
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-gray-600 font-medium hover:text-primary transition-colors">首页</a>
+                <a href="vmware.html" class="text-gray-600 font-medium hover:text-primary transition-colors">VMware下载</a>
+                <a href="virus.html" class="text-gray-600 font-medium hover:text-primary transition-colors">病毒下载</a>
+                <a href="resources.html" class="text-primary font-medium hover:text-dark transition-colors">资源下载</a>
+            </div>
+            <button class="md:hidden text-gray-600 focus:outline-none" id="menuBtn">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-white w-full border-t" id="mobileMenu">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="index.html" class="text-gray-600 font-medium py-2 hover:text-primary transition-colors">首页</a>
+                <a href="vmware.html" class="text-gray-600 font-medium py-2 hover:text-primary transition-colors">VMware下载</a>
+                <a href="virus.html" class="text-gray-600 font-medium py-2 hover:text-primary transition-colors">病毒下载</a>
+                <a href="resources.html" class="text-primary font-medium py-2 hover:text-dark transition-colors">资源下载</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面标题 -->
+    <header class="pt-24 pb-12 bg-gradient-to-br from-primary to-dark text-white">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">资源下载中心</h1>
+            <p class="text-lg opacity-90">精选各类实用软件、工具和学习资料，满足您的不同需求</p>
+        </div>
+    </header>
+
+    <!-- 内容区域 -->
+    <main class="py-16">
+        <div class="container mx-auto px-4">
+            <!-- 搜索和筛选 -->
+            <div class="bg-white rounded-xl shadow-md p-6 mb-10">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1 relative">
+                        <input type="text" placeholder="搜索资源..." class="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <select class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option>所有分类</option>
+                            <option>操作系统</option>
+                            <option>开发工具</option>
+                            <option>设计软件</option>
+                            <option>学习资料</option>
+                            <option>实用工具</option>
+                        </select>
+                        <select class="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option>最新上传</option>
+                            <option>下载最多</option>
+                            <option>评分最高</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- 分类标签 -->
+                <div class="mt-6">
+                    <h3 class="text-gray-700 font-medium mb-3">热门分类：</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="#" class="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-dark transition-colors">全部资源</a>
+                        <a href="#" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">操作系统</a>
+                        <a href="#" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">开发工具</a>
+                        <a href="#" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">设计软件</a>
+                        <a href="#" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">学习资料</a>
+                        <a href="#" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">实用工具</a>
+                        <a href="#" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">模板素材</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 资源列表 -->
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">热门资源</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- 资源1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden resource-card">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/31/600/400" alt="开发工具包" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded">
+                            开发工具
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-lg font-bold text-gray-800">Web开发工具包</h3>
+                            <div class="flex items-center text-yellow-500 text-sm">
+                                <i class="fa fa-star"></i>
+                                <span class="ml-1 text-gray-600">4.8</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">包含前端开发常用工具和框架，适合Web开发者使用，提高开发效率。</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="fa fa-download mr-1"></i>
+                                <span>12,548</span>
+                                <span class="mx-2">|</span>
+                                <i class="fa fa-calendar mr-1"></i>
+                                <span>2023-05-12</span>
+                            </div>
+                            <a href="#" class="text-primary hover:text-dark font-medium flex items-center">
+                                <i class="fa fa-download mr-1"></i> 下载
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 资源2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden resource-card">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/32/600/400" alt="设计素材" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 right-3 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">
+                            设计素材
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-lg font-bold text-gray-800">UI设计模板集</h3>
+                            <div class="flex items-center text-yellow-500 text-sm">
+                                <i class="fa fa-star"></i>
+                                <span class="ml-1 text-gray-600">4.9</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">精选100+高质量UI设计模板，包含移动端和桌面端，可直接用于项目开发。</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="fa fa-download mr-1"></i>
+                                <span>28,903</span>
+                                <span class="mx-2">|</span>
+                                <i class="fa fa-calendar mr-1"></i>
+                                <span>2023-06-25</span>
+                            </div>
+                            <a href="#" class="text-primary hover:text-dark font-medium flex items-center">
+                                <i class="fa fa-download mr-1"></i> 下载
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 资源3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden resource-card">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/33/600/400" alt="学习资料" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
+                            学习资料
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-lg font-bold text-gray-800">Python编程教程</h3>
+                            <div class="flex items-center text-yellow-500 text-sm">
+                                <i class="fa fa-star"></i>
+                                <span class="ml-1 text-gray-600">4.7</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">从入门到精通的Python编程教程，包含视频、电子书和实战项目源码。</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="fa fa-download mr-1"></i>
+                                <span>45,127</span>
+                                <span class="mx-2">|</span>
+                                <i class="fa fa-calendar mr-1"></i>
+                                <span>2023-04-18</span>
+                            </div>
+                            <a href="#" class="text-primary hover:text-dark font-medium flex items-center">
+                                <i class="fa fa-download mr-1"></i> 下载
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 资源4 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden resource-card">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/34/600/400" alt="操作系统" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 right-3 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">
+                            操作系统
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-lg font-bold text-gray-800">Linux系统镜像</h3>
+                            <div class="flex items-center text-yellow-500 text-sm">
+                                <i class="fa fa-star"></i>
+                                <span class="ml-1 text-gray-600">4.6</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">包含Ubuntu、CentOS、Debian等主流Linux发行版的最新镜像文件。</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="fa fa-download mr-1"></i>
+                                <span>32,789</span>
+                                <span class="mx-2">|</span>
+                                <i class="fa fa-calendar mr-1"></i>
+                                <span>2023-07-03</span>
+                            </div>
+                            <a href="#" class="text-primary hover:text-dark font-medium flex items-center">
+                                <i class="fa fa-download mr-1"></i> 下载
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 资源5 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden resource-card">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/35/600/400" alt="实用工具" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 right-3 bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded">
+                            实用工具
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-lg font-bold text-gray-800">系统优化工具包</h3>
+                            <div class="flex items-center text-yellow-500 text-sm">
+                                <i class="fa fa-star"></i>
+                                <span class="ml-1 text-gray-600">4.5</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">包含系统清理、性能优化、隐私保护等实用工具，让电脑运行更流畅。</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="fa fa-download mr-1"></i>
+                                <span>18,452</span>
+                                <span class="mx-2">|</span>
+                                <i class="fa fa-calendar mr-1"></i>
+                                <span>2023-05-29</span>
+                            </div>
+                            <a href="#" class="text-primary hover:text-dark font-medium flex items-center">
+                                <i class="fa fa-download mr-1"></i> 下载
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 资源6 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden resource-card">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/36/600/400" alt="模板素材" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                            模板素材
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-lg font-bold text-gray-800">PPT模板合集</h3>
+                            <div class="flex items-center text-yellow-500 text-sm">
+                                <i class="fa fa-star"></i>
+                                <span class="ml-1 text-gray-600">4.8</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">500+高质量PPT模板，适用于商务演示、学术报告、产品介绍等场景。</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="fa fa-download mr-1"></i>
+                                <span>52,107</span>
+                                <span class="mx-2">|</span>
+                                <i class="fa fa-calendar mr-1"></i>
+                                <span>2023-06-15</span>
+                            </div>
+                            <a href="#" class="text-primary hover:text-dark font-medium flex items-center">
+                                <i class="fa fa-download mr-1"></i> 下载
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 分页 -->
+            <div class="flex justify-center">
+                <nav class="inline-flex rounded-md shadow">
+                    <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                        <i class="fa fa-chevron-left"></i>
+                    </a>
+                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-primary text-sm font-medium text-white">
+                        1
+                    </a>
+                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        2
+                    </a>
+                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        3
+                    </a>
+                    <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                        ...
+                    </span>
+                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        10
+                    </a>
+                    <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                        <i class="fa fa-chevron-right"></i>
+                    </a>
+                </nav>
+            </div>
+            
+            <!-- 资源上传指南 -->
+            <div class="mt-16 bg-light rounded-2xl p-8 shadow-lg">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800">资源上传与分享</h2>
+                
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <div class="lg:w-1/2">
+                        <p class="text-gray-600 mb-6">如果您有优质资源想要分享给更多人，可以通过我们的资源上传系统进行提交。所有资源会经过审核后发布，确保资源的安全性和实用性。</p>
+                        
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">上传资源须知</h3>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-success mt-1 mr-3"></i>
+                                <span class="text-gray-600">确保资源为原创或拥有合法分享权限</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-success mt-1 mr-3"></i>
+                                <span class="text-gray-600">不包含恶意软件、病毒或侵权内容</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-success mt-1 mr-3"></i>
+                                <span class="text-gray-600">提供清晰的资源描述和使用说明</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-success mt-1 mr-3"></i>
+                                <span class="text-gray-600">上传前请压缩打包，单个文件不超过1GB</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="#" class="inline-flex items-center bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-dark transition-colors">
+                            <i class="fa fa-upload mr-2"></i>上传资源
+                        </a>
+                    </div>
+                    
+                    <div class="lg:w-1/2">
+                        <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-xl">
+                            <video controls poster="https://picsum.photos/id/37/1200/675" class="w-full h-full object-cover">
+                                <source src="#" type="video/mp4">
+                                您的浏览器不支持视频播放
+                            </video>
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                <button class="bg-white text-primary rounded-full w-16 h-16 flex items-center justify-center text-2xl">
+                                    <i class="fa fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="text-center mt-4 text-gray-600">资源上传与使用教程视频</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-pagelines mr-2"></i>珍珠的博客
+                    </h3>
+                    <p class="text-gray-300 mb-4">分享实用资源和技术教程，助您轻松解决问题</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fa fa-wechat text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fa fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="vmware.html" class="text-gray-300 hover:text-white transition-colors">VMware下载</a></li>
+                        <li><a href="virus.html" class="text-gray-300 hover:text-white transition-colors">病毒下载</a></li>
+                        <li><a href="resources.html" class="text-gray-300 hover:text-white transition-colors">资源下载</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-300">
+                            <i class="fa fa-envelope mr-2"></i> contact@pearlblog.com
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fa fa-map-marker mr-2"></i> 北京市海淀区
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 珍珠的博客 版权所有</p>
+                <p class="mt-2 text-sm">本站资源仅供学习交流使用，请在下载后24小时内删除</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2', 'bg-white/95', 'backdrop-blur-sm');
+                navbar.classList.remove('py-3', 'bg-white');
+            } else {
+                navbar.classList.add('py-3', 'bg-white');
+                navbar.classList.remove('py-2', 'bg-white/95', 'backdrop-blur-sm');
+            }
+        });
+
+        // 移动端菜单切换
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 模拟下载功能
+        document.querySelectorAll('a:has(.fa-download)').forEach(link => {
+            if (!link.getAttribute('href').startsWith('#')) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const resourceName = this.closest('.resource-card') ? this.closest('.resource-card').querySelector('h3').textContent : '资源';
+                    alert(`开始下载：${resourceName}\n\n请注意：实际下载将在几秒钟后开始`);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

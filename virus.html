@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>病毒下载</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#9333ea',
+                        secondary: '#a855f7',
+                        light: '#f5f3ff',
+                        dark: '#4c1d95',
+                        danger: '#dc2626'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .alert-shadow {
+                box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary flex items-center">
+                <i class="fa fa-pagelines mr-2"></i>珍珠的博客
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-gray-600 font-medium hover:text-primary transition-colors">首页</a>
+                <a href="vmware.html" class="text-gray-600 font-medium hover:text-primary transition-colors">VMware下载</a>
+                <a href="virus.html" class="text-primary font-medium hover:text-dark transition-colors">病毒下载</a>
+                <a href="resources.html" class="text-gray-600 font-medium hover:text-primary transition-colors">资源下载</a>
+            </div>
+            <button class="md:hidden text-gray-600 focus:outline-none" id="menuBtn">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-white w-full border-t" id="mobileMenu">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="index.html" class="text-gray-600 font-medium py-2 hover:text-primary transition-colors">首页</a>
+                <a href="vmware.html" class="text-gray-600 font-medium py-2 hover:text-primary transition-colors">VMware下载</a>
+                <a href="virus.html" class="text-primary font-medium py-2 hover:text-dark transition-colors">病毒下载</a>
+                <a href="resources.html" class="text-gray-600 font-medium py-2 hover:text-primary transition-colors">资源下载</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面标题 -->
+    <header class="pt-24 pb-12 bg-gradient-to-br from-danger to-red-700 text-white">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">病毒研究与分析</h1>
+            <p class="text-lg opacity-90">了解计算机病毒的原理、分类及防护措施，提高网络安全意识</p>
+        </div>
+    </header>
+
+    <!-- 警告提示 -->
+    <div class="container mx-auto px-4 -mt-6 relative z-10">
+        <div class="bg-white border-l-4 border-danger p-5 rounded-r-lg shadow-md alert-shadow">
+            <div class="flex items-start">
+                <div class="flex-shrink-0">
+                    <i class="fa fa-exclamation-triangle text-danger text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-lg font-medium text-gray-800">重要安全提示</h3>
+                    <div class="mt-1 text-gray-600">
+                        <p>本页面仅提供病毒相关知识和研究资料，不提供任何可执行病毒文件的下载。研究病毒应在受控环境中进行，严禁用于非法用途。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <main class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-10">
+                <!-- 主要内容 -->
+                <div class="lg:w-2/3">
+                    <!-- 病毒基础知识 -->
+                    <div class="bg-white rounded-xl shadow-md p-8 mb-10">
+                        <h2 class="text-2xl font-bold mb-4 text-gray-800">病毒基础知识</h2>
+                        
+                        <p class="text-gray-600 mb-6">计算机病毒是一种能够自我复制的程序，通常具有破坏性。它们可以附着在其他程序上，通过各种途径传播，对计算机系统造成损害。了解病毒的工作原理是有效防范的第一步。</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="bg-red-50 p-5 rounded-lg border border-red-100">
+                                <h3 class="text-xl font-bold mb-3 text-danger flex items-center">
+                                    <i class="fa fa-bug mr-2"></i>病毒的类型
+                                </h3>
+                                <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                                    <li>文件型病毒</li>
+                                    <li>引导区病毒</li>
+                                    <li>宏病毒</li>
+                                    <li>蠕虫病毒</li>
+                                    <li>木马病毒</li>
+                                    <li>勒索病毒</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-5 rounded-lg border border-blue-100">
+                                <h3 class="text-xl font-bold mb-3 text-blue-600 flex items-center">
+                                    <i class="fa fa-exchange mr-2"></i>传播途径
+                                </h3>
+                                <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                                    <li>电子邮件附件</li>
+                                    <li>恶意网站</li>
+                                    <li>移动存储设备</li>
+                                    <li>软件下载</li>
+                                    <li>漏洞利用</li>
+                                    <li>即时通讯工具</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="my-6">
+                            <img src="https://picsum.photos/id/21/800/400" alt="网络安全示意图" class="w-full h-auto rounded-lg shadow-md">
+                            <p class="text-sm text-gray-500 mt-2 text-center">网络安全防护示意图</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 防护措施 -->
+                    <div class="bg-white rounded-xl shadow-md p-8 mb-10">
+                        <h2 class="text-2xl font-bold mb-4 text-gray-800">病毒防护措施</h2>
+                        
+                        <p class="text-gray-600 mb-6">预防胜于治疗，采取有效的防护措施可以大大降低感染病毒的风险。以下是一些实用的安全建议：</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                    <i class="fa fa-shield"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-800">安装杀毒软件</h3>
+                                    <p class="text-gray-600">选择知名的杀毒软件并保持更新，定期进行全盘扫描。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                    <i class="fa fa-refresh"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-800">及时更新系统</h3>
+                                    <p class="text-gray-600">操作系统和应用软件的漏洞是病毒入侵的主要途径，及时安装更新补丁。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-800">谨慎处理邮件附件</h3>
+                                    <p class="text-gray-600">不打开来源不明的邮件附件，即使是熟人发送的，也要先确认。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                    <i class="fa fa-lock"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-800">使用防火墙</h3>
+                                    <p class="text-gray-600">启用系统防火墙，限制不必要的网络连接，防止病毒传播。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                    <i class="fa fa-cloud-download"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-800">安全下载软件</h3>
+                                    <p class="text-gray-600">只从官方网站或可信来源下载软件，避免使用破解版软件。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 视频教程 -->
+                    <div class="bg-white rounded-xl shadow-md p-8">
+                        <h2 class="text-2xl font-bold mb-6 text-gray-800">视频：网络安全与病毒防护</h2>
+                        <div class="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
+                            <video controls poster="https://picsum.photos/id/22/1200/675" class="w-full h-full object-cover">
+                                <source src="#" type="video/mp4">
+                                您的浏览器不支持视频播放
+                            </video>
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                <button class="bg-white text-danger rounded-full w-16 h-16 flex items-center justify-center text-2xl">
+                                    <i class="fa fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-gray-600">本视频讲解网络安全基础知识，分析常见病毒的工作原理，并演示如何有效防范各类网络威胁。</p>
+                    </div>
+                </div>
+                
+                <!-- 侧边栏 -->
+                <div class="lg:w-1/3">
+                    <!-- 研究资源 -->
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+                            <i class="fa fa-book mr-2"></i>病毒研究资源
+                        </h3>
+                        <div class="space-y-4">
+                            <a href="#" class="block p-4 border border-gray-200 rounded-lg hover:border-primary hover:bg-light transition-colors">
+                                <h4 class="font-bold text-gray-800">病毒分析入门指南</h4>
+                                <p class="text-sm text-gray-600 mt-1">适合初学者的病毒分析基础知识</p>
+                            </a>
+                            <a href="#" class="block p-4 border border-gray-200 rounded-lg hover:border-primary hover:bg-light transition-colors">
+                                <h4 class="font-bold text-gray-800">恶意代码逆向工程</h4>
+                                <p class="text-sm text-gray-600 mt-1">高级病毒分析技术与工具</p>
+                            </a>
+                            <a href="#" class="block p-4 border border-gray-200 rounded-lg hover:border-primary hover:bg-light transition-colors">
+                                <h4 class="font-bold text-gray-800">网络安全事件案例分析</h4>
+                                <p class="text-sm text-gray-600 mt-1">历史重大病毒攻击事件解析</p>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- 下载按钮区域 -->
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-8 border-2 border-red-100">
+                        <h3 class="text-xl font-bold mb-6 text-danger text-center">研究样本获取</h3>
+                        
+                        <p class="text-gray-600 mb-6 text-center">
+                            合法的病毒研究样本可通过专业的网络安全机构获取，以下是正规渠道入口：
+                        </p>
+                        
+                        <button id="downloadBtn" class="w-full bg-danger text-white py-3 rounded-lg font-medium hover:bg-red-700 transition-colors flex items-center justify-center">
+                            <i class="fa fa-download mr-2"></i>获取研究样本
+                        </button>
+                        
+                        <p class="text-xs text-gray-500 text-center mt-4">
+                            点击后将跳转到正规安全机构网站，需提供研究用途证明
+                        </p>
+                    </div>
+                    
+                    <!-- 安全工具 -->
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+                            <i class="fa fa-wrench mr-2"></i>安全分析工具
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center justify-between">
+                                <span class="text-gray-700">VirtualBox</span>
+                                <a href="#" class="text-primary hover:text-dark text-sm">下载</a>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="text-gray-700">Wireshark</span>
+                                <a href="#" class="text-primary hover:text-dark text-sm">下载</a>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="text-gray-700">IDA Pro</span>
+                                <a href="#" class="text-primary hover:text-dark text-sm">下载</a>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="text-gray-700">Ghidra</span>
+                                <a href="#" class="text-primary hover:text-dark text-sm">下载</a>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="text-gray-700">Cuckoo Sandbox</span>
+                                <a href="#" class="text-primary hover:text-dark text-sm">下载</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-pagelines mr-2"></i>珍珠的博客
+                    </h3>
+                    <p class="text-gray-300 mb-4">分享实用资源和技术教程，助您轻松解决问题</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fa fa-wechat text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fa fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="vmware.html" class="text-gray-300 hover:text-white transition-colors">VMware下载</a></li>
+                        <li><a href="virus.html" class="text-gray-300 hover:text-white transition-colors">病毒下载</a></li>
+                        <li><a href="resources.html" class="text-gray-300 hover:text-white transition-colors">资源下载</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-300">
+                            <i class="fa fa-envelope mr-2"></i> contact@pearlblog.com
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fa fa-map-marker mr-2"></i> 北京市海淀区
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 珍珠的博客 版权所有</p>
+                <p class="mt-2 text-sm">本网站内容仅供学习研究，严禁用于非法用途</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 模态框 -->
+    <div id="modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4 transform transition-all scale-95 opacity-0" id="modalContent">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa fa-exclamation-triangle text-danger text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">安全提示</h3>
+                <p class="text-gray-600 mb-6">病毒样本具有潜在危险，仅用于授权的安全研究。使用前请确保您有合法授权，并在隔离环境中操作。</p>
+                <div class="flex space-x-4">
+                    <button id="cancelBtn" class="flex-1 py-2 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                        取消
+                    </button>
+                    <button id="confirmBtn" class="flex-1 py-2 bg-danger text-white rounded-lg font-medium hover:bg-red-700 transition-colors">
+                        我已了解风险
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2', 'bg-white/95', 'backdrop-blur-sm');
+                navbar.classList.remove('py-3', 'bg-white');
+            } else {
+                navbar.classList.add('py-3', 'bg-white');
+                navbar.classList.remove('py-2', 'bg-white/95', 'backdrop-blur-sm');
+            }
+        });
+
+        // 移动端菜单切换
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 模态框相关
+        const modal = document.getElementById('modal');
+        const modalContent = document.getElementById('modalContent');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const confirmBtn = document.getElementById('confirmBtn');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        downloadBtn.addEventListener('click', openModal);
+        cancelBtn.addEventListener('click', closeModal);
+        confirmBtn.addEventListener('click', function() {
+            closeModal();
+            alert('已跳转到正规安全研究机构网站');
+        });
+
+        // 点击模态框外部关闭
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

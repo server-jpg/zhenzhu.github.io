@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VMware下载</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#9333ea',
+                        secondary: '#a855f7',
+                        light: '#f5f3ff',
+                        dark: '#4c1d95'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .step-number {
+                @apply w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg;
+            }
+            .step-active {
+                @apply border-primary bg-primary/10;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary flex items-center">
+                <i class="fa fa-pagelines mr-2"></i>珍珠的博客
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-gray-600 font-medium hover:text-primary transition-colors">首页</a>
+                <a href="vmware.html" class="text-primary font-medium hover:text-dark transition-colors">VMware下载</a>
+                <a href="virus.html" class="text-gray-600 font-medium hover:text-primary transition-colors">病毒下载</a>
+                <a href="resources.html" class="text-gray-600 font-medium hover:text-primary transition-colors">资源下载</a>
+            </div>
+            <button class="md:hidden text-gray-600 focus:outline-none" id="menuBtn">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-white w-full border-t" id="mobileMenu">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="index.html" class="text-gray-600 font-medium py-2 hover:text-primary transition-colors">首页</a>
+                <a href="vmware.html" class="text-primary font-medium py-2 hover:text-dark transition-colors">VMware下载</a>
+                <a href="virus.html" class="text-gray-600 font-medium py-2 hover:text-primary transition-colors">病毒下载</a>
+                <a href="resources.html" class="text-gray-600 font-medium py-2 hover:text-primary transition-colors">资源下载</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面标题 -->
+    <header class="pt-24 pb-12 bg-gradient-to-br from-primary to-dark text-white">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">VMware下载教程</h1>
+            <p class="text-lg opacity-90">详细介绍VMware虚拟机软件的下载、安装和基础配置方法</p>
+        </div>
+    </header>
+
+    <!-- 内容区域 -->
+    <main class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-10">
+                <!-- 主要内容 -->
+                <div class="lg:w-2/3">
+                    <!-- 介绍部分 -->
+                    <div class="bg-white rounded-xl shadow-md p-8 mb-10">
+                        <h2 class="text-2xl font-bold mb-4 text-gray-800">什么是VMware？</h2>
+                        <p class="text-gray-600 mb-4">VMware是一款功能强大的虚拟机软件，它允许你在一台物理计算机上同时运行多个操作系统。无论是开发测试、软件演示还是学习不同操作系统，VMware都是一个理想的选择。</p>
+                        
+                        <div class="my-6">
+                            <img src="https://picsum.photos/id/11/800/400" alt="VMware界面" class="w-full h-auto rounded-lg shadow-md">
+                            <p class="text-sm text-gray-500 mt-2 text-center">VMware Workstation Pro界面展示</p>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold mt-6 mb-3 text-gray-800">为什么选择VMware？</h3>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                            <li>支持多种操作系统，包括Windows、Linux、macOS等</li>
+                            <li>强大的快照功能，方便测试和恢复</li>
+                            <li>良好的性能和资源管理</li>
+                            <li>支持虚拟机之间的网络连接和共享</li>
+                            <li>适合开发人员、测试人员和IT爱好者使用</li>
+                        </ul>
+                    </div>
+
+                    <!-- 下载教程 -->
+                    <div class="bg-white rounded-xl shadow-md p-8 mb-10">
+                        <h2 class="text-2xl font-bold mb-6 text-gray-800">VMware下载与安装步骤</h2>
+                        
+                        <div class="space-y-10">
+                            <!-- 步骤1 -->
+                            <div class="flex">
+                                <div class="mr-6">
+                                    <div class="step-number">1</div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-3 text-gray-800">访问官方网站</h3>
+                                    <p class="text-gray-600 mb-4">打开浏览器，访问VMware官方网站（www.vmware.com），找到适合你操作系统的版本。VMware提供多个产品，对于个人用户，推荐使用VMware Workstation Pro（Windows）或VMware Fusion（macOS）。</p>
+                                    <div class="my-4">
+                                        <img src="https://picsum.photos/id/12/800/400" alt="VMware官网" class="w-full h-auto rounded-lg shadow-md">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 步骤2 -->
+                            <div class="flex">
+                                <div class="mr-6">
+                                    <div class="step-number">2</div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-3 text-gray-800">选择合适版本并下载</h3>
+                                    <p class="text-gray-600 mb-4">根据你的需求选择合适的版本。VMware提供免费试用版和付费版，你可以先下载试用版体验。点击下载按钮，等待安装文件下载完成。</p>
+                                    <div class="bg-light p-4 rounded-lg mb-4">
+                                        <p class="text-gray-700"><i class="fa fa-info-circle text-primary mr-2"></i> 注意：确保下载与你的操作系统匹配的版本（32位或64位）。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 步骤3 -->
+                            <div class="flex">
+                                <div class="mr-6">
+                                    <div class="step-number">3</div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-3 text-gray-800">运行安装程序</h3>
+                                    <p class="text-gray-600 mb-4">找到下载完成的安装文件，双击运行。在弹出的安装向导中，按照提示进行操作。你可以使用默认设置，也可以根据需要自定义安装路径和组件。</p>
+                                    <div class="my-4">
+                                        <img src="https://picsum.photos/id/13/800/400" alt="VMware安装界面" class="w-full h-auto rounded-lg shadow-md">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 步骤4 -->
+                            <div class="flex">
+                                <div class="mr-6">
+                                    <div class="step-number">4</div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-3 text-gray-800">完成安装并激活</h3>
+                                    <p class="text-gray-600 mb-4">安装完成后，启动VMware。首次运行时，你需要输入许可证密钥进行激活，或者选择试用模式。试用版通常可以免费使用30天。</p>
+                                    <a href="#" class="inline-flex items-center bg-primary text-white px-5 py-2 rounded-lg font-medium hover:bg-dark transition-colors mt-2">
+                                        <i class="fa fa-download mr-2"></i>获取VMware
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 视频教程 -->
+                    <div class="bg-white rounded-xl shadow-md p-8">
+                        <h2 class="text-2xl font-bold mb-6 text-gray-800">视频教程：VMware安装与使用</h2>
+                        <div class="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
+                            <video controls poster="https://picsum.photos/id/14/1200/675" class="w-full h-full object-cover">
+                                <source src="#" type="video/mp4">
+                                您的浏览器不支持视频播放
+                            </video>
+                            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                <button class="bg-white text-primary rounded-full w-16 h-16 flex items-center justify-center text-2xl">
+                                    <i class="fa fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-gray-600">本视频将详细演示VMware的下载、安装过程，以及如何创建和配置第一个虚拟机。适合初学者快速上手。</p>
+                    </div>
+                </div>
+                
+                <!-- 侧边栏 -->
+                <div class="lg:w-1/3">
+                    <!-- 下载按钮 -->
+                    <div class="bg-primary text-white rounded-xl shadow-lg p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fa fa-download mr-2"></i>下载中心
+                        </h3>
+                        <div class="space-y-4">
+                            <a href="#" class="block bg-white text-primary text-center px-4 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                                VMware Workstation Pro 17
+                            </a>
+                            <a href="#" class="block bg-white/20 text-white text-center px-4 py-3 rounded-lg font-medium hover:bg-white/30 transition-colors">
+                                VMware Fusion 13 (macOS)
+                            </a>
+                            <a href="#" class="block bg-white/20 text-white text-center px-4 py-3 rounded-lg font-medium hover:bg-white/30 transition-colors">
+                                VMware Player (免费版)
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- 系统要求 -->
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">系统要求</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-600">64位处理器，支持硬件虚拟化技术</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-600">至少4GB内存，推荐8GB以上</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-600">至少10GB可用硬盘空间</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-600">Windows 10/11 或 macOS 10.15+</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span class="text-gray-600">互联网连接（用于下载和激活）</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 常见问题 -->
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">常见问题</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">VMware与VirtualBox有什么区别？</h4>
+                                <p class="text-gray-600 text-sm">VMware通常性能更好，功能更丰富，但需要付费；VirtualBox是免费开源软件，功能相对简单，适合个人用户。</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">如何获取VMware的免费许可证？</h4>
+                                <p class="text-gray-600 text-sm">学生和教育机构可以通过VMware的教育计划申请免费许可证，个人用户可以使用免费的VMware Player版本。</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">安装时提示虚拟化技术未开启怎么办？</h4>
+                                <p class="text-gray-600 text-sm">需要进入计算机的BIOS设置，找到并开启Intel VT-x或AMD-V虚拟化技术选项。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-pagelines mr-2"></i>珍珠的博客
+                    </h3>
+                    <p class="text-gray-300 mb-4">分享实用资源和技术教程，助您轻松解决问题</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fa fa-wechat text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fa fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="vmware.html" class="text-gray-300 hover:text-white transition-colors">VMware下载</a></li>
+                        <li><a href="virus.html" class="text-gray-300 hover:text-white transition-colors">病毒下载</a></li>
+                        <li><a href="resources.html" class="text-gray-300 hover:text-white transition-colors">资源下载</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-300">
+                            <i class="fa fa-envelope mr-2"></i> contact@pearlblog.com
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fa fa-map-marker mr-2"></i> 北京市海淀区
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 珍珠的博客 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2', 'bg-white/95', 'backdrop-blur-sm');
+                navbar.classList.remove('py-3', 'bg-white');
+            } else {
+                navbar.classList.add('py-3', 'bg-white');
+                navbar.classList.remove('py-2', 'bg-white/95', 'backdrop-blur-sm');
+            }
+        });
+
+        // 移动端菜单切换
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+<span>觉得麻烦？去这个直链链接</span>
+
+</body>
+</html>
